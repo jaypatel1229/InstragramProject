@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\adapter\myRecyclerViewAdapter.cs" />
     <Compile Include="Resources\adapter\recyclerAdapter.cs" />
     <Compile Include="Resources\dbHelper\dataModel.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -99,6 +100,12 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Xamarin.Android.Support.v4">
+      <Version>23.4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <Version>23.4.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.5" />
     <PackageReference Include="Xamarin.AndroidX.RecyclerView">
       <Version>1.2.1.5</Version>

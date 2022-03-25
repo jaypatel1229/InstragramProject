@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">InstragramProject</string>
     <string name="action_settings">Settings</string>
+
+	<string name="abcOne">priyank_02</string>
+	<string name="abcTwo">vruti_21</string>
+	<string name="abcThree">mit</string>
+	<string name="abcFour">sagar_45</string>
+	<string name="abcFive">devance_55</string>
+	<string name="abcSix">vedancy_21</string>
+	<string name="abcSeven">jerry_29</string>
+	<string name="abcEight">arish_45</string>
+	<string name="abcNine">manish_03</string>
+	<string name="abcTen">ashish_47</string>
+	<string name="abcEleven">devlo_chakli</string>
 </resources>

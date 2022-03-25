@@ -15,4 +15,11 @@ namespace InstragramProject.Resources.dbHelper
     {
         public int MyImage { get; set; }
     }
+
+    public class myDataModel
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Image { get; set; }
+    }
 }
