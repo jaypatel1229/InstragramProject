@@ -13,10 +13,12 @@ namespace InstragramProject
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        RecyclerView myRecyclerView;
+        RecyclerView myRecyclerView,myRecyclerViewTwo;
         recyclerAdapter myAdapter;
+        myRecyclerViewAdapter adapter;
         List<dataModel> myDataModel;
-        LinearLayoutManager myLinearLayoutManager;
+        List<myDataModel> DataModel;
+        LinearLayoutManager myLinearLayoutManager,myLinearTwo;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,10 +31,16 @@ namespace InstragramProject
             myRecyclerView.SetAdapter(myAdapter);
             myLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
             myRecyclerView.SetLayoutManager(myLinearLayoutManager);
-          
-           
 
+            AddingNewData();
+            myRecyclerViewTwo = FindViewById<RecyclerView>(Resource.Id.recyclerViewTwo);
+            adapter = new myRecyclerViewAdapter(DataModel,this);           
+            myRecyclerViewTwo.SetAdapter(adapter);
+            myLinearTwo = new LinearLayoutManager(this, LinearLayoutManager.Vertical, false);
+            myRecyclerViewTwo.SetLayoutManager(myLinearTwo);
         }
+
+    
 
         private void AddingData()
         {
@@ -60,6 +68,20 @@ namespace InstragramProject
                     new dataModel{MyImage=Resource.Drawable.Udan },
                      new dataModel{MyImage=Resource.Drawable.VC1 },
                       new dataModel{MyImage=Resource.Drawable.VC2 }
+            };
+        }
+        private void AddingNewData()
+        {
+            DataModel = new List<myDataModel>
+            {
+                new myDataModel{Name="Priyank",Description="Engineer",Image=Resource.Drawable.INA,ImageTwo=Resource.Drawable.ISRO},
+                new myDataModel{Name="Vedancy",Description="Engineer",Image=Resource.Drawable.INA,ImageTwo=Resource.Drawable.INA},
+                new myDataModel{Name="Devance",Description="Engineer",Image=Resource.Drawable.VC1,ImageTwo=Resource.Drawable.plane},
+                new myDataModel{Name="Sagar",Description="Engineer",Image=Resource.Drawable.plane,ImageTwo=Resource.Drawable.VC1},
+                new myDataModel{Name="Manish",Description="Engineer",Image=Resource.Drawable.VC2,ImageTwo=Resource.Drawable.VC2},
+                new myDataModel{Name="Mit",Description="Engineer",Image=Resource.Drawable.INA,ImageTwo=Resource.Drawable.space},
+                new myDataModel{Name="Arish",Description="Engineer",Image=Resource.Drawable.space,ImageTwo=Resource.Drawable.Udan},
+                new myDataModel{Name="Jay",Description="Engineer",Image=Resource.Drawable.Udan,ImageTwo=Resource.Drawable.INA}
             };
         }
     }

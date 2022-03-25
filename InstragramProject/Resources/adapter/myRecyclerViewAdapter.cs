@@ -1,21 +1,25 @@
-﻿using Android.Support.V7.Widget;
+﻿using Android.Content;
+
 using Android.Views;
 using Android.Widget;
+using AndroidX.RecyclerView.Widget;
 using InstragramProject.Resources.dbHelper;
 using System;
 using System.Collections.Generic;
 
 namespace InstragramProject.Resources.adapter
 {
-    internal class myRecyclerViewAdapter : RecyclerView.Adapter
+    public class myRecyclerViewAdapter : RecyclerView.Adapter
     {
         public event EventHandler<myRecyclerViewAdapterClickEventArgs> ItemClick;
         public event EventHandler<myRecyclerViewAdapterClickEventArgs> ItemLongClick;
         List<myDataModel> myitems;
+        public Context context;
 
-        public myRecyclerViewAdapter(List<myDataModel> data)
+        public myRecyclerViewAdapter(List<myDataModel> data, Context context)
         {
             myitems = data;
+            this.context = context;
         }
 
         // Create new views (invoked by the layout manager)
@@ -24,9 +28,9 @@ namespace InstragramProject.Resources.adapter
 
             //Setup your layout here
             View itemView = null;
-            //var id = Resource.Layout.__YOUR_ITEM_HERE;
-            //itemView = LayoutInflater.From(parent.Context).
-            //       Inflate(id, parent, false);
+            var id = Resource.Layout.recyclerViewPost;
+            itemView = LayoutInflater.From(parent.Context).
+                   Inflate(id, parent, false);
 
             var vh = new myRecyclerViewAdapterViewHolder(itemView, OnClick, OnLongClick);
             return vh;
@@ -40,6 +44,10 @@ namespace InstragramProject.Resources.adapter
             // Replace the contents of the view with that element
             var holder = viewHolder as myRecyclerViewAdapterViewHolder;
             //holder.TextView.Text = items[position];
+            holder.myTextOne.Text= item.Name;
+            holder.myTextTwo.Text= item.Description;
+            holder.imageViewOne.SetImageResource(item.Image);
+            holder.imageViewTwo.SetImageResource(item.ImageTwo);
         }
 
         public override int ItemCount => myitems.Count;
@@ -54,11 +62,18 @@ namespace InstragramProject.Resources.adapter
         //public TextView TextView { get; set; }
 
         public TextView myTextOne, myTextTwo;
+        public ImageView imageViewOne,imageViewTwo;
 
         public myRecyclerViewAdapterViewHolder(View itemView, Action<myRecyclerViewAdapterClickEventArgs> clickListener,
                             Action<myRecyclerViewAdapterClickEventArgs> longClickListener) : base(itemView)
         {
             //TextView = v;
+            myTextOne = itemView.FindViewById<TextView>(Resource.Id.textViewProfileName);
+            myTextTwo = itemView.FindViewById<TextView>(Resource.Id.listName);
+
+            imageViewOne = itemView.FindViewById<ImageView>(Resource.Id.imageView);
+            imageViewTwo = itemView.FindViewById<ImageView>(Resource.Id.imageViewTwo);
+
             itemView.Click += (sender, e) => clickListener(new myRecyclerViewAdapterClickEventArgs { View = itemView, Position = AdapterPosition });
             itemView.LongClick += (sender, e) => longClickListener(new myRecyclerViewAdapterClickEventArgs { View = itemView, Position = AdapterPosition });
         }

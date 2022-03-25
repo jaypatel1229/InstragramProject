@@ -21,5 +21,6 @@ namespace InstragramProject.Resources.dbHelper
         public string Name { get; set; }
         public string Description { get; set; }
         public int Image { get; set; }
+        public int ImageTwo { get; set; }
     }
 }
