@@ -48,6 +48,9 @@ namespace InstragramProject.Resources.adapter
             holder.myTextTwo.Text= item.Description;
             holder.imageViewOne.SetImageResource(item.Image);
             holder.imageViewTwo.SetImageResource(item.ImageTwo);
+            holder.like.SetImageResource(item.Like);
+            holder.comment.SetImageResource(item.Comment);
+            holder.shear.SetImageResource(item.Shear);
         }
 
         public override int ItemCount => myitems.Count;
@@ -62,7 +65,7 @@ namespace InstragramProject.Resources.adapter
         //public TextView TextView { get; set; }
 
         public TextView myTextOne, myTextTwo;
-        public ImageView imageViewOne,imageViewTwo;
+        public ImageView imageViewOne,imageViewTwo,like,comment,shear;
 
         public myRecyclerViewAdapterViewHolder(View itemView, Action<myRecyclerViewAdapterClickEventArgs> clickListener,
                             Action<myRecyclerViewAdapterClickEventArgs> longClickListener) : base(itemView)
@@ -73,6 +76,10 @@ namespace InstragramProject.Resources.adapter
 
             imageViewOne = itemView.FindViewById<ImageView>(Resource.Id.imageView);
             imageViewTwo = itemView.FindViewById<ImageView>(Resource.Id.imageViewTwo);
+
+            like = itemView.FindViewById<ImageView>(Resource.Id.imageViewLike);
+            comment = itemView.FindViewById<ImageView>(Resource.Id.imageViewCmt);
+            shear = itemView.FindViewById<ImageView>(Resource.Id.imageViewShear);
 
             itemView.Click += (sender, e) => clickListener(new myRecyclerViewAdapterClickEventArgs { View = itemView, Position = AdapterPosition });
             itemView.LongClick += (sender, e) => longClickListener(new myRecyclerViewAdapterClickEventArgs { View = itemView, Position = AdapterPosition });

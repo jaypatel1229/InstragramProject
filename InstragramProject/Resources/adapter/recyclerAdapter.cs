@@ -45,10 +45,9 @@ namespace InstragramProject.Resources.adapter
             var holder = viewHolder as recyclerAdapterViewHolder;
             //holder.TextView.Text = items[position];
             holder.image.SetImageResource(item.MyImage);
-            //if (position == 0)
-            //{
-                
-            //}
+            //holder.textView.Text = item.Name;
+            holder.textView.Text = item.Name;
+        
         }
 
         public override int ItemCount => list.Count;
@@ -63,10 +62,12 @@ namespace InstragramProject.Resources.adapter
         //public TextView TextView { get; set; }
 
         public ImageView image;
+        public TextView textView;
         public recyclerAdapterViewHolder(View itemView, Action<recyclerAdapterClickEventArgs> clickListener,
                             Action<recyclerAdapterClickEventArgs> longClickListener) : base(itemView)
         {
             image = itemView.FindViewById<ImageView>(Resource.Id.imageView);
+            textView = itemView.FindViewById<TextView>(Resource.Id.textView);
             //TextView = v;
             itemView.Click += (sender, e) => clickListener(new recyclerAdapterClickEventArgs { View = itemView, Position = AdapterPosition });
             itemView.LongClick += (sender, e) => longClickListener(new recyclerAdapterClickEventArgs { View = itemView, Position = AdapterPosition });

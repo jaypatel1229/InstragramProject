@@ -14,6 +14,7 @@ namespace InstragramProject.Resources.dbHelper
     public class dataModel
     {
         public int MyImage { get; set; }
+        public string Name { get; set; }
     }
 
     public class myDataModel
@@ -22,5 +23,9 @@ namespace InstragramProject.Resources.dbHelper
         public string Description { get; set; }
         public int Image { get; set; }
         public int ImageTwo { get; set; }
+
+        public int Like { get; set; }
+        public int Comment { get; set; }
+        public int Shear { get; set; }
     }
 }
